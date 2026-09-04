@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XiaoYe的回声</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 1200px;
+      min-height: 100vh;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: rgba(255, 201, 201, 0.6);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(150, 201, 255);
+      border-radius: 4px;
+      min-height: 50px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgb(106, 211, 237);
+    }
+
+    body {
+      /* 背景地址 */
+      background-image: url('@/assets/jpg/beijing01.jpg');
+      min-height: 100vh;
+      /* 背景重复 */
+      background-repeat: no-repeat;
+      /* 撑满背景 */
+      background-size: cover;
+      /* 背景固定 */
+      background-position: center;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+
+</body>
+
 </html>
