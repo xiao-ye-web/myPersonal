@@ -1,17 +1,11 @@
 <template>
   <!-- <div class="page-wrap"> -->
 <div class="nav">
-<h3>ポチ酱の记忆回声</h3>
+<h3 title="欢迎来到我的小窝">ポチ酱 <span style="font-size: 25px;color:cyan;">の</span> 记忆回声</h3>
 <ul>
-  <li v-router-link-active><RouterLink to="/shouye" active-class="active">首页</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/xiangmu" active-class="active">项目</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/jiyi" active-class="active">归档</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/wenzhang" active-class="active">文章</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/yinyue" active-class="active">音乐</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/shuoshuo" active-class="active">说说</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/youlian" active-class="active">友链</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/zatan" active-class="active">杂谈</RouterLink></li>
-  <li v-router-link-active><RouterLink to="/guanyu" active-class="active">关于</RouterLink></li>
+  <li v-for="item in navArr" :key="item.navid">
+    <RouterLink :to="item.src" active-class="active">{{ item.name }}</RouterLink>
+  </li>
 </ul>
 <div style="width:200px;">
 <input type="text" placeholder="搜索文章..." class="sou-suo">
@@ -20,15 +14,22 @@
 <!-- </div> -->
    <div class="bg-blur">
   </div>
-  <div style="margin: 0 auto;width: 300px;height:65px;font-size: 20px;text-align: center;">
+  <!-- <div style="margin: 0 auto;width: 300px;height:65px;font-size: 20px;text-align: center;">
 <h3 style="margin-top: 50px;font-family: 'yafeng', sans-serif;color:black;">後藤独ひとり</h3>
 <p style="margin-top: 20px;font-size: 15px;font-family: 'yafeng', sans-serif;color:azure;d">欢迎来到ポチの记忆小窝</p>
-  </div>
+  </div> -->
   <!-- <div style="width: 100px;height: 1000px;background-color: blue;">
   </div> -->
 
-<!-- 内容展示区域 -->
- <div class="content">
+<!-- 内容展示区域 --> 
+  <div class="content">
+  
+<!-- <RouterView v-slot="{Component,route}">
+  <transition name="page"
+  mode="out-in">
+    <Component :is="Component"  :key="route.path" />
+    </transition>
+  </RouterView> -->
   <RouterView></RouterView>
   </div>
 </template>
@@ -36,16 +37,35 @@
 <script setup lang="ts" name="App">
 // 引入所有的路由工具
 import { RouterView ,RouterLink} from 'vue-router'
+// 导入过渡工具
+
+
+import {ref,reactive} from 'vue'
+
+// 数据
+const navArr = reactive([
+  {navid:1,src:'/shouye',name:'首页'},
+  {navid:2,src:'/xiangmu',name:'项目'},
+  {navid:3,src:'/shuoshuo',name:'说说'},
+  {navid:4,src:'/wenzhang',name:'文章'},
+  {navid:5,src:'/yinyue',name:'音乐'},
+  {navid:10,src:'/view',name:'视界'},
+  {navid:6,src:'/jiyi',name:'归档'},
+  {navid:7,src:'/youlian',name:'友链'},
+  {navid:8,src:'/zatan',name:'杂谈'},
+  {navid:9,src:'/guanyu',name:'关于'},
+  
+])
 </script>
 
 <style scoped>
 
 .content {
-  width: 90%;
-  height: 300px;
-  margin: 200px auto;
-  background-color: antiquewhite;
-  border: 1px solid #000;
+  width: 100%;
+  height: 100vh;
+  margin: 70px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .sou-suo {
 display: block;
@@ -58,10 +78,12 @@ box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
 /* 提示文本空一格 */
 padding-left: 10px;
 transition: 0.3s;
+outline:none;
 }
 /* 表单获取焦点变宽 */
 .sou-suo:focus {
   width: 200px;
+  box-shadow: 0 0 3px #eba5a5;
 }
     .bg-blur {
       position: fixed;
@@ -70,7 +92,7 @@ transition: 0.3s;
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      background-image: url('@/assets/jpg/beijing01.jpg');
+      background-image: url('@/assets/jpg/beijing02.jpg');
       /* 背景重复 */
       background-repeat: no-repeat;
       /* 撑满背景 */
@@ -114,7 +136,7 @@ min-width: 1200px; */
     height: 40px;
   }
   a {
-     display: block;
+    display: block;
     width: 100%;
     height: 100%;
     text-decoration: none;

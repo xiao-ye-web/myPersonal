@@ -17,6 +17,8 @@ import Chats from '@/views/zatan.vue'
 import About from '@/views/guanyu.vue'
 // 文章
 import Article from '@/views/wenzhang.vue'
+// 视界
+import View from '@/views/shijie.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 // 实例化路由器
@@ -26,7 +28,12 @@ const router = createRouter({
   //一堆路由配置
   routes: [{
     path: '/shouye',
-    component: Home
+    component: Home,
+    // 配置出入动画
+    // meta: {
+    //   enter: 'animate__fadeInUp',
+    //   leave: 'animate__fadeOut',
+    // }
   },
   {
     path: '/xiangmu',
@@ -60,6 +67,15 @@ const router = createRouter({
     path: '/guanyu',
     component: About
   },
+  {
+    path: '/view',
+    component: View
+  },
+  {
+    // 页面初始画面重定向到首页
+    path: '/',
+    redirect: '/shouye'
+  }
   ]
 })
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>专题</h1>
+    <h1>杂谈</h1>
   </div>
 </template>
 
