@@ -76,7 +76,14 @@ const router = createRouter({
     path: '/',
     redirect: '/shouye'
   }
-  ]
+  ],
+  // 配置滚动行为
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+    return { top: 0 }
+  }
 })
 
 export default router

@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="page-wrap"> -->
-<div class="nav">
-<h3 title="欢迎来到我的小窝">ポチ酱 <span style="font-size: 25px;color:cyan;">の</span> 记忆回声</h3>
+<div class="nav" :class="{'navbg':isshow}">
+<h3 title="欢迎来到我的小窝" style="font-family: 'yafeng', sans-serif;">ポチ酱 <span style="font-size: 25px;color:cyan;">の</span> 记忆回声</h3>
 <ul>
   <li v-for="item in navArr" :key="item.navid">
     <RouterLink :to="item.src" active-class="active">{{ item.name }}</RouterLink>
@@ -14,23 +14,18 @@
 <!-- </div> -->
    <div class="bg-blur">
   </div>
-  <!-- <div style="margin: 0 auto;width: 300px;height:65px;font-size: 20px;text-align: center;">
-<h3 style="margin-top: 50px;font-family: 'yafeng', sans-serif;color:black;">後藤独ひとり</h3>
-<p style="margin-top: 20px;font-size: 15px;font-family: 'yafeng', sans-serif;color:azure;d">欢迎来到ポチの记忆小窝</p>
-  </div> -->
-  <!-- <div style="width: 100px;height: 1000px;background-color: blue;">
-  </div> -->
 
 <!-- 内容展示区域 --> 
   <div class="content">
-  
-<!-- <RouterView v-slot="{Component,route}">
-  <transition name="page"
-  mode="out-in">
-    <Component :is="Component"  :key="route.path" />
-    </transition>
-  </RouterView> -->
-  <RouterView></RouterView>
+
+  <RouterView v-slot="{Component,route}">
+    <Transition name="page" mode="out-in">
+      <component :is="Component"
+      v-if="Component"
+      :key="route.path"
+      />
+    </Transition>
+  </RouterView>
   </div>
 </template>
 
@@ -40,7 +35,7 @@ import { RouterView ,RouterLink} from 'vue-router'
 // 导入过渡工具
 
 
-import {ref,reactive} from 'vue'
+import {ref,reactive,onMounted,onUnmounted} from 'vue'
 
 // 数据
 const navArr = reactive([
@@ -56,16 +51,62 @@ const navArr = reactive([
   {navid:9,src:'/guanyu',name:'关于'},
   
 ])
+// 导航背景色开关
+// const islode = ref(true)
+const isshow = ref(false)
+const navht = ref(50)
+// 封装函数
+function scrollNav (){
+  // 获取网页的滚动距离
+  const srcollTop = window.scrollY
+  // 配置
+  if (srcollTop >= navht.value){
+    isshow.value = true
+  }else{
+    isshow.value = false
+  }
+}
+// 页面挂载时，开始监听滚动事件
+onMounted(()=>{
+  window.addEventListener('scroll',scrollNav)
+  scrollNav()
+})
+// 跳转删除
+onUnmounted(()=>{
+  window.removeEventListener('scroll',scrollNav)
+})
 </script>
 
 <style scoped>
+.nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  /* 水平居中 */
+  justify-content: center;
+  align-items: center;
+  /* 间距 */
+  gap: 200px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: rgba(255, 201, 201, 0.6);
+  transition: 0.3s;
+  }
+  .navbg{
+    /* background-color: rgba(255, 201, 201, 0.6); */
+   background-color: rgba(255, 255, 255,0.9);
+  }
 
 .content {
   width: 100%;
   height: 100vh;
-  margin: 70px auto;
+  margin: 450px auto;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.3);
+  /* position: relative; */
 }
 .sou-suo {
 display: block;
@@ -107,22 +148,7 @@ outline:none;
 /* .page-wrap{
 min-width: 1200px; */
 /* } */
-.nav{
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  display: flex;
-  /* 水平居中 */
-  justify-content: center;
-  align-items: center;
-  /* 间距 */
-  gap: 200px;
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  background-color: rgba(255, 201, 201, 0.6);
-  }
+
   ul {
     display: flex;
       /* 水平居中 */
@@ -174,5 +200,32 @@ min-width: 1200px; */
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+</style>
+<style>
+.page-holder{
+  width: 100%;
+  min-height: 100%;
+}
+
+.page-enter-from{
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-enter-active {
+  transition: all 0.5s ease;
+}
+.page-enter-to{
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-leave-from{
+  opacity: 1;
+}
+.page-leave-active{
+  transition: all 0.5s ease;
+}
+.page-leave-to{
+  opacity: 0;
 }
 </style>

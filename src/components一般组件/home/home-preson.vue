@@ -1,9 +1,9 @@
 <template>
 <div class="home-preson">
   <div class="one-line">
-<el-avatar class="avatar" shape="square" :size="90" :src="touxiang01"/>
+<el-avatar @click="zw" class="avatar" shape="square" :size="90" :src="touxiang01"/>
 <div class="text">
-<h2>後藤独ひとり</h2>
+<h2 @click="zw">後藤独ひとり</h2>
 <p style="font-size: 12px;margin-top: 10px;">很开心与大家学习交流技术喵！！！</p>
 </div>
 </div>
@@ -54,6 +54,9 @@ function say() {
 }
 function link() {
   router.push('/youlian')
+}
+function zw (){
+  router.push('/guanyu')
 }
 </script>
 

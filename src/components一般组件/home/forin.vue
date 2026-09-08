@@ -58,11 +58,11 @@ onUnmounted(()=>{
 
 <style scoped>
 .png {
-   width: 400px;
-  height: 250px;
+   width: 450px;
+  height: 300px;
   background-color: rgba(242, 242, 242, 0.5);
   border-radius: 15px;
-  margin-left: 20%;
+  margin-left: 22%;
     border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 3px rgba(82, 81, 81, 0.8);
   margin-top: 20px;
@@ -77,7 +77,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   width: 400px;
   height: 30px;
   color: aliceblue;
@@ -89,8 +89,8 @@ ul {
 ul li {
   list-style: none;
   width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  height: 4px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255);
 }
 ul li.active{
