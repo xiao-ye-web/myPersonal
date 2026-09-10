@@ -19,12 +19,13 @@
   <div class="content">
 
   <RouterView v-slot="{Component,route}">
-    <Transition name="page" mode="out-in">
+    <Transition v-if="route.matched.length === 1"
+    name="page" mode="out-in">
       <component :is="Component"
-      v-if="Component"
       :key="route.path"
       />
     </Transition>
+    <component v-else :is="Component"  />
   </RouterView>
   </div>
 </template>
@@ -178,7 +179,6 @@ min-width: 1200px; */
   .active {
     color: rgb(179, 222, 208);
     background-color: rgba(255, 255, 255, 0.6);
-    
   }
   li {
     width: 50px;

@@ -1,6 +1,6 @@
 <template>
 <div class="logo">
-  <div class="logo-text">ChooChoo</div>
+  <div class="logo-text" title="这是小窝的名字">ChooChoo</div>
   <div class="logo-line">Welcome to My Bouncing Code World</div>
   </div>
 </template>

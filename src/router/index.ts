@@ -19,6 +19,16 @@ import About from '@/views/guanyu.vue'
 import Article from '@/views/wenzhang.vue'
 // 视界
 import View from '@/views/shijie.vue'
+// ················································
+
+// 内心
+import Neixin from '@/components一般组件/文章组件/neixin.vue'
+// 错误
+import Chuowu from '@/components一般组件/文章组件/chuowu.vue'
+// 文章内容
+import AI from '@/components一般组件/文章组件/AIAgent.vue'
+// 文章内容
+
 
 import { createRouter, createWebHistory } from 'vue-router'
 // 实例化路由器
@@ -26,56 +36,76 @@ const router = createRouter({
   //配置路由工作状态为history模式
   history: createWebHistory(),
   //一堆路由配置
-  routes: [{
-    path: '/shouye',
-    component: Home,
-    // 配置出入动画
-    // meta: {
-    //   enter: 'animate__fadeInUp',
-    //   leave: 'animate__fadeOut',
-    // }
-  },
-  {
-    path: '/xiangmu',
-    component: Projects
-  },
-  {
-    path: '/wenzhang',
-    component: Article
-  },
-  {
-    path: '/jiyi',
-    component: Archives
-  },
-  {
-    path: '/yinyue',
-    component: Music
-  },
-  {
-    path: '/shuoshuo',
-    component: Talks
-  },
-  {
-    path: '/youlian',
-    component: Friends
-  },
-  {
-    path: '/zatan',
-    component: Chats
-  },
-  {
-    path: '/guanyu',
-    component: About
-  },
-  {
-    path: '/view',
-    component: View
-  },
-  {
-    // 页面初始画面重定向到首页
-    path: '/',
-    redirect: '/shouye'
-  }
+  routes: [
+    {
+      path: '/shouye',
+      component: Home,
+      // 配置出入动画
+      // meta: {
+      //   enter: 'animate__fadeInUp',
+      //   leave: 'animate__fadeOut',
+      // }
+    },
+    {
+      path: '/xiangmu',
+      component: Projects
+    },
+    {
+      path: '/wenzhang',
+      component: Article,
+      children: [
+        // 默认显示aiagent页
+        {
+          path: 'AIAgent',
+          component: AI
+        },
+        {
+          path: 'neixin',
+          component: Neixin
+        },
+        {
+          path: 'chuowu',
+          component: Chuowu
+        },
+      ]
+    },
+    // {
+    //   path: '/', component: Home,
+    //   meta: { pageTrans: true }
+    // },
+    {
+      path: '/jiyi',
+      component: Archives
+    },
+    {
+      path: '/yinyue',
+      component: Music
+    },
+    {
+      path: '/shuoshuo',
+      component: Talks
+    },
+    {
+      path: '/youlian',
+      component: Friends
+    },
+    {
+      path: '/zatan',
+      component: Chats
+    },
+    {
+      path: '/guanyu',
+      component: About
+    },
+    {
+      path: '/view',
+      component: View
+    },
+    {
+      // 页面初始画面重定向到首页
+      path: '/',
+      redirect: '/shouye'
+    }
   ],
   // 配置滚动行为
   scrollBehavior(to, from, savedPosition) {

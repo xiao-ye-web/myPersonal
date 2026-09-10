@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-  <h1>项目</h1>
+  <h1 title="这是项目组件，用心做每一个项目">项目</h1>
   <div class="title">从零到一独立，用心完成每一个项目</div>
 </div>
 </template>

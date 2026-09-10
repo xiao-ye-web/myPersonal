@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-  <h1>碎碎念</h1>
+  <h1 title="碎碎念，每天都要开心哟">碎碎念</h1>
   <div class="title">记录自己生活的琐事,分享生活的趣事</div>
 </div>
 </template>
