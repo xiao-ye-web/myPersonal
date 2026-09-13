@@ -27,6 +27,8 @@
     </Transition>
     <component v-else :is="Component"  />
   </RouterView>
+  <!-- ············································· -->
+  <audio ref="audioRef" style="display:none"></audio>
   </div>
 </template>
 
@@ -34,22 +36,40 @@
 // 引入所有的路由工具
 import { RouterView ,RouterLink} from 'vue-router'
 // 导入过渡工具
-
-
 import {ref,reactive,onMounted,onUnmounted} from 'vue'
+// ··············································
+import { useMusicStore, setAudioEl } from '@/stores/counter'
+const store = useMusicStore()
+const audioRef = ref<HTMLAudioElement | null>(null)
 
+onMounted(() => {
+  const el = audioRef.value
+  if (!el) return
+
+  setAudioEl(el)
+  if (store.playlist[0]) {
+    el.src = store.playlist[0].url
+  }
+
+  el.onplay = () => { store.playing = true }
+  el.onpause = () => { store.playing = false }
+  el.ontimeupdate = () => { store.currentTime = el.currentTime }
+  el.onloadedmetadata = () => { store.duration = el.duration || 0 }
+  el.onended = () => { store.next() }
+})
+// ·························································
 // 数据
 const navArr = reactive([
   {navid:1,src:'/shouye',name:'首页'},
-  {navid:2,src:'/xiangmu',name:'项目'},
-  {navid:3,src:'/shuoshuo',name:'说说'},
-  {navid:4,src:'/wenzhang',name:'文章'},
-  {navid:5,src:'/yinyue',name:'音乐'},
-  {navid:10,src:'/view',name:'视界'},
+  {navid:2,src:'/xiangmu',name:'项目'}, 
+  {navid:3,src:'/wenzhang',name:'文章'},
+  {navid:4,src:'/yinyue',name:'音乐'},
+  {navid:5,src:'/view',name:'视界'},
   {navid:6,src:'/jiyi',name:'归档'},
   {navid:7,src:'/youlian',name:'友链'},
   {navid:8,src:'/zatan',name:'杂谈'},
-  {navid:9,src:'/guanyu',name:'关于'},
+  {navid:9,src:'/shuoshuo',name:'说说'},
+  {navid:10,src:'/guanyu',name:'关于'},
   
 ])
 // 导航背景色开关
@@ -106,7 +126,7 @@ onUnmounted(()=>{
   height: 100vh;
   margin: 450px auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
+  /* background-color: rgba(255, 255, 255, 0.3); */
   /* position: relative; */
 }
 .sou-suo {
@@ -142,7 +162,7 @@ outline:none;
       /* 背景固定 */
       background-position: center;
       background-attachment: fixed;
-      /* filter: blur(7px); */
+      filter: blur(7px);
       /* opacity: 0.9; */
       transform: scale(1.1);
     }

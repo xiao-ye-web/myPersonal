@@ -1,9 +1,9 @@
 <template>
 <div class="home-preson">
   <div class="one-line">
-<el-avatar @click="zw" class="avatar" shape="square" :size="90" :src="touxiang01"/>
+<el-avatar @click="zw" class="avatar" shape="square" :size="90" :src="touxiang02"/>
 <div class="text">
-<h2 @click="zw">後藤独ひとり</h2>
+<h2 @click="zw">One Li</h2>
 <p style="font-size: 12px;margin-top: 10px;">很开心与大家学习交流技术喵！！！</p>
 </div>
 </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts" name="home-preson">
-import touxiang01 from '@/assets/jpg/touxiang01.jpg'
+import touxiang02 from '@/assets/jpg/touxiang02.jpg'
 import { useRouter } from 'vue-router'
 import { ref ,reactive} from 'vue'
 import bilibili from '@/assets/jpg/bilibili.png'

@@ -21,14 +21,6 @@ import Article from '@/views/wenzhang.vue'
 import View from '@/views/shijie.vue'
 // ················································
 
-// 内心
-import Neixin from '@/components一般组件/文章组件/neixin.vue'
-// 错误
-import Chuowu from '@/components一般组件/文章组件/chuowu.vue'
-// 文章内容
-import AI from '@/components一般组件/文章组件/AIAgent.vue'
-// 文章内容
-
 
 import { createRouter, createWebHistory } from 'vue-router'
 // 实例化路由器
@@ -53,21 +45,6 @@ const router = createRouter({
     {
       path: '/wenzhang',
       component: Article,
-      children: [
-        // 默认显示aiagent页
-        {
-          path: 'AIAgent',
-          component: AI
-        },
-        {
-          path: 'neixin',
-          component: Neixin
-        },
-        {
-          path: 'chuowu',
-          component: Chuowu
-        },
-      ]
     },
     // {
     //   path: '/', component: Home,

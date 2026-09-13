@@ -1,19 +1,22 @@
 <template>
-  <div class="xm01">
-    <div class="xmstore">未破土</div>
-    <div class="xmName">项目名字</div>
-    <div class="xmtitle">此项目介绍</div>
+  <div class="xm01" v-for="item in arr" :key="item.id">
+    <div class="xmstore">{{item.store}}</div>
+    <div class="xmName">{{item.name}}</div>
+    <div class="xmtitle">{{item.title}}</div>
     <div class="xmjishu">
       <div style="display: flex; gap: 10px;">
-      <div class="style1">项目技术1</div>
-      <div class="style2">项目技术2</div>
+      <div class="style1">{{item.tech[0]}}</div>
+      <div class="style2">{{item.tech[1]}}</div>
     </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts" name="xiangmu01">
-
+import {ref,reactive} from 'vue'
+const arr = reactive([
+  {id:1,name:'项目名字',title:'此项目介绍',store:'未破土',tech:['项目技术1','项目技术2']}
+])
 </script>
 
 <style scoped>
@@ -24,7 +27,7 @@
   border-radius: 10px;
   margin: 50px 20%;
   padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 3px rgba(82, 81, 81, 0.8);
   transition: 0.5s;
 }

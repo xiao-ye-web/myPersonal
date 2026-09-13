@@ -11,8 +11,8 @@
      <div>
      <day></day>
      <div style="display: flex;">
-   <myStore></myStore>
    <myStore02></myStore02>
+   <myStore></myStore>
   </div>
   </div>
   </div>

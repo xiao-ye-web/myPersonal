@@ -32,7 +32,7 @@ function qiehuan(){
 <style scoped>
 .youlian{
   width: 100%;
-  height: 1000px;
+  height: 2000px;
   background-color: rgb(251, 236, 237);
   position: absolute;
   top: 50px;
