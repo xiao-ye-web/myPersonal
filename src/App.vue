@@ -36,7 +36,7 @@
 // 引入所有的路由工具
 import { RouterView ,RouterLink} from 'vue-router'
 // 导入过渡工具
-import {ref,reactive,onMounted,onUnmounted} from 'vue'
+import {ref,reactive,onMounted,onUnmounted,watch} from 'vue'
 // ··············································
 import { useMusicStore, setAudioEl } from '@/stores/counter'
 const store = useMusicStore()
@@ -57,6 +57,14 @@ onMounted(() => {
   el.onloadedmetadata = () => { store.duration = el.duration || 0 }
   el.onended = () => { store.next() }
 })
+
+onMounted(() => {
+  store.loadLyric(0)
+})
+
+watch(() => store.currentIndex, (i) => {
+  store.loadLyric(i)
+})
 // ·························································
 // 数据
 const navArr = reactive([
@@ -70,7 +78,6 @@ const navArr = reactive([
   {navid:8,src:'/zatan',name:'杂谈'},
   {navid:9,src:'/shuoshuo',name:'说说'},
   {navid:10,src:'/guanyu',name:'关于'},
-  
 ])
 // 导航背景色开关
 // const islode = ref(true)

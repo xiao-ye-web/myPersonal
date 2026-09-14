@@ -144,7 +144,7 @@ background-color:rgb(218, 184, 241);
 }
 .zz {
   position: absolute;
-  width: 80px;
+  width: 90px;
   height: 20px;
   left: 150px;
   top: 85px;
