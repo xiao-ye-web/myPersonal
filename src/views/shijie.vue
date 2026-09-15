@@ -17,6 +17,7 @@
         <img :src="sj08" alt="" class="img04">
         <img :src="sj09" alt="" class="img05">
         <img :src="sj11" alt="" class="img06">
+        <img :src="sj10" alt="" class="img07">
         <div class="tl">孤独摇滚</div>
     </div>
     </div>
@@ -28,12 +29,18 @@ import sj02 from '@/assets/png/sj02.png'
 import sj03 from '@/assets/png/sj03.png'
 import sj08 from '@/assets/png/sj08.png'
 import sj09 from '@/assets/png/sj09.png'
+import sj10 from '@/assets/png/sj10.png'
 import sj11 from '@/assets/png/sj11.png'
+
+import xs01 from '@/assets/png/xs01.png'
+import xs02 from '@/assets/png/xs02.png'
+import xs03 from '@/assets/png/xs03.png'
+
 
 import {reactive} from 'vue'
 const arr = reactive([
     {id:1,sj01:sj01,sj02:sj02,sj03:sj03,name:'次元喵',time:'2026-09-08',title:'这里存放着次元碎片'},
-    {id:2,sj01:sj01,sj02:sj02,sj03:sj03,name:'日常集',time:'2026-09-12',title:'这里存放着日常碎片'},
+    {id:2,sj01:xs01,sj02:xs02,sj03:xs03,name:'日常集',time:'2026-09-12',title:'这里存放着日常碎片'},
 ])
 </script>
 
@@ -83,7 +90,7 @@ p {
     width: 410px;
     height: 350px;
     margin-top: 600px;
-    margin-left: 250px;
+    margin-left: 150px;
     /* background-color: rgb(169, 227, 203); */
     position: relative;
 }
@@ -99,10 +106,16 @@ p {
         top: 0px;
         left: 675px;
     }
+    .img07{
+        transform: rotate(0deg);
+        top: 0px;
+        left: 1010px;
+    }
 }
 .img04,
 .img05,
-.img06 {
+.img06,
+.img07 {
     width: 330px;
     height: 250px;
     object-fit: cover;
@@ -120,16 +133,22 @@ p {
     left: -15px;
     transform: rotate(-5deg);
     top: 35px;
+    z-index: 5;
 }
 .img06{
     left: 5px;
     z-index: 10;
 }
+.img07{
+    transform: rotate(-20deg);
+    left: -10px;
+    top: 30px;
+}
 .tl {
     position: absolute;
     font-size: 20px;
     top: 100px;
-    left: 20px;
+    left: 10px;
     width: 20px;
     font-family: 'yafeng', sans-serif;
     writing-mode: vertical-rl;

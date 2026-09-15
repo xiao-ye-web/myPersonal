@@ -76,6 +76,10 @@ onUnmounted(()=>{
   box-shadow: 0 2px 3px rgba(82, 81, 81, 0.8);
   margin-top: 20px;
   position:relative;
+  transition: 0.5s;
+}
+.png:hover{
+  transform: translateY(-5px);
 }
 img {
   width: 100%;

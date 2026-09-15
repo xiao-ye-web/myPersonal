@@ -14,8 +14,10 @@
 import bj12 from '@/assets/bj/bj12.jpg'
 import bj13 from '@/assets/bj/bj13.jpg'
 import bj14 from '@/assets/bj/bj14.jpg'
+import bj15 from '@/assets/bj/bj15.png'
 import { reactive } from 'vue';
 const arr = reactive([
+  {id:4,src:bj15,time:'9月14日',tit:'音乐:今天完善博客的音乐模块，第一次做音乐模块花了很多时间，踩了很多坑，歌单，歌词，内容位置计算真的很烦！'},
   {id:3,src:bj14,time:'9月06日',tit:'筑基:目前框架已经搭建差不多了，剩下的就是补全组件内容，还有一些创新的UI思路，还是决定动漫风格，今天博客完成20%'},
   {id:2,src:bj13,time:'9月04日',tit:'启航:今天开始了我博客的搭建，没有UI的灵感，需要思考的比较多，第一天进度非常慢，第一个页面的一半组件都没有写完，还是感觉很累'},
   {id:1,src:bj12,time:'8月09日',tit:'博客的设计:作者80%以动漫为元素，运用了Vue3、Vite搭建，用网站的形式记录自己的日常，目前还只是静态网页，后续作者可能会开发为全栈博客'},

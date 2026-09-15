@@ -25,6 +25,12 @@ function guanyu() {
   margin-left: 3%;
   margin-top:19px ;
   position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 3px rgba(82, 81, 81, 0.8);
+  transition: 0.5s;
+}
+.store:hover{
+  transform: translateY(-5px);
 }
 img {
   width: 150px;

@@ -109,6 +109,11 @@ background-color:rgb(218, 184, 241);
     border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 3px rgba(82, 81, 81, 0.8);
   position: relative;
+  transition: 0.5s;
+}
+.music:hover{
+  background-color: aliceblue;
+  transform:translateY(-3px);
 }
 .tx {
   width: 110px;
@@ -136,7 +141,7 @@ background-color:rgb(218, 184, 241);
 }
 .uname {
   position: absolute;
-  width: 80px;
+  width: 190px;
   height: 20px;
   left: 150px;
   top: 50px;

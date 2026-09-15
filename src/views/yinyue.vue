@@ -31,8 +31,9 @@
 <div v-if="tab === 'list'" class="cont-list" ref="listBox">
 <ul class="ul">
   <li v-for="(song,i) in store.playlist" :key="song.id"
-   :class="{'m-active': i === store.currentIndex}">
-    <span class="font">{{ `0${i + 1}` }}</span>
+   :class="{'m-active': i === store.currentIndex}"
+   @click="store.switchTo(i)">
+    <span class="font">{{String(i + 1).padStart(2, '0') }}</span>
     <img :src="song.cover" alt="" class="list-img">
     <div style="width: 150px;">
   <div class="m-name">{{ song.name }}</div>
@@ -186,8 +187,8 @@ background-color:rgb(136, 161, 224);
   height: 250px;
   background-color: aliceblue;
   position: relative;
-    border: 1px solid rgba(223, 217, 217, 0.2);
-  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
+    /* border: 1px solid rgba(223, 217, 217, 0.2);
+  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8); */
   transition: 0.5s;
 } 
 .music-head:hover{
@@ -251,8 +252,8 @@ h1 {
   margin-top: 40px;
   height: 60px;
   background-color: rgba(237, 231, 231, 0.5);
-    border: 1px solid rgba(223, 217, 217, 0.2);
-  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
+  /* border: 1px solid rgba(223, 217, 217, 0.2);
+  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8); */
 }
 .lyric,.list {
   width: 420px;
@@ -291,22 +292,26 @@ background-color: rgb(206, 183, 229);
   margin-top: 20px;
   height: 500px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(223, 217, 217, 0.2);
-  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
+  /* border: 1px solid rgba(223, 217, 217, 0.2);
+  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8); */
 }
 .cont-list {
   width: 900px;
   height: 500px;
   border-radius: 15px;
   background-color: rgba(229, 234, 234,0.5);
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-.ul {
-  position: absolute;
+.cont-list::-webkit-scrollbar {
+  display: none;
+}
+/* .ul {
   width: 900px;
   height: 500px;
   list-style: none;
   border-radius: 15px;
-}
+} */
 .ul li {
   display: flex;
   gap: 20px;
@@ -336,8 +341,8 @@ li:hover {
   height: 50px;
   object-fit: cover;
   border-radius: 10px;
-  border: 1px solid rgba(223, 217, 217, 0.2);
-  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
+  /* border: 1px solid rgba(223, 217, 217, 0.2);
+  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8); */
 }
 .font {
   font-weight: 700;
@@ -379,5 +384,9 @@ li:hover {
 .active {
   font-size: 25px;
   color: rgb(184, 106, 230);
+}
+.music-head,.music-nav,.music-content,.list-img {
+  border: 1px solid rgba(223, 217, 217, 0.2);
+  box-shadow: 0 2px 3px rgba(100, 100, 100, 0.8);
 }
 </style>

@@ -10,13 +10,13 @@
 <div class="two-line">
 <div class="wen-zhang">
 
-  <span @click="wen"><h2 class="num1">6</h2>
+  <span @click="wen"><h2 class="num1">11</h2>
 <span class="biao-qian">文章</span></span>
 
-  <span @click="say"><h2 class="num2">7</h2>
-<span class="biao-qian">说说</span></span>
+  <span @click="say"><h2 class="num2">4</h2>
+<span class="biao-qian">杂谈</span></span>
 
-  <span @click="link"><h2 class="num3">8</h2>
+  <span @click="link"><h2 class="num3">2</h2>
 <span class="biao-qian">链</span></span>
 </div>
 <!-- <div class="link"> -->
@@ -50,7 +50,7 @@ function wen() {
   router.push('/wenzhang')
 }
 function say() {
-  router.push('/shuoshuo')
+  router.push('/zatan')
 }
 function link() {
   router.push('/youlian')

@@ -6,6 +6,12 @@ import mimg4 from '@/assets/mjpg/04.png'
 import mimg5 from '@/assets/mjpg/05.png'
 import mimg6 from '@/assets/mjpg/06.png'
 import mimg7 from '@/assets/mjpg/07.png'
+import mimg8 from '@/assets/mjpg/08.png'
+import mimg9 from '@/assets/mjpg/09.png'
+import mimg10 from '@/assets/mjpg/10.png'
+
+
+
 
 import music1 from '@/assets/music/tianqizhizi.mp3'
 import music2 from '@/assets/music/xinzuo.mp3'
@@ -14,6 +20,10 @@ import music4 from '@/assets/music/huohua.mp3'
 import music5 from '@/assets/music/name.mp3'
 import music6 from '@/assets/music/zhujiao.mp3'
 import music7 from '@/assets/music/zhiwo.mp3'
+import music8 from '@/assets/music/wuzhe.mp3'
+import music9 from '@/assets/music/taicongming.mp3'
+import music10 from '@/assets/music/gaogenxie.mp3'
+
 
 import lrc1 from '@/assets/music/tianqizhizi.lrc?raw'
 import lrc2 from '@/assets/music/xinzuo.lrc?raw'
@@ -22,8 +32,11 @@ import lrc4 from '@/assets/music/huohua.lrc?raw'
 import lrc5 from '@/assets/music/name.lrc?raw'
 import lrc6 from '@/assets/music/zhujiao.lrc?raw'
 import lrc7 from '@/assets/music/zhiwo.lrc?raw'
+import lrc8 from '@/assets/music/wuzhe.lrc?raw'
+import lrc9 from '@/assets/music/taicongming.lrc?raw'
+import lrc10 from '@/assets/music/gaogenxie.lrc?raw'
 
-const lrcMap = [lrc1, lrc2, lrc3, lrc4, lrc5, lrc6, lrc7]
+const lrcMap = [lrc1, lrc2, lrc3, lrc4, lrc5, lrc6, lrc7, lrc8, lrc9, lrc10]
 
 function parseLrc(text: string) {
   const lines: { time: number; text: string }[] = []
@@ -103,6 +116,27 @@ export const useMusicStore = defineStore('music', {
         url: music7,
         cover: mimg7
       },
+      {
+        id: 8,
+        name: 'NIGHT DANCER',
+        artist: 'imase',
+        url: music8,
+        cover: mimg8
+      },
+      {
+        id: 9,
+        name: '太聪明',
+        artist: '陈绮贞',
+        url: music9,
+        cover: mimg9
+      },
+      {
+        id: 10,
+        name: '红色高跟鞋',
+        artist: '蔡健雅',
+        url: music10,
+        cover: mimg10
+      },
     ] as Song[],
     lyrics: [] as { time: number, text: string }[],
     currentIndex: 0,
@@ -142,6 +176,10 @@ export const useMusicStore = defineStore('music', {
     loadLyric(index: number) {
       const raw = lrcMap[index]
       this.lyrics = raw ? parseLrc(raw) : []
+    },
+    switchTo(index: number) {
+      this.currentIndex = index
+      this.load()          // 重新加载并播放
     }
   }
 })

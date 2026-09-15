@@ -25,6 +25,10 @@ function wenzhang() {
   margin-left: 3%;
   margin-top:19px ;
   position: relative;
+  transition: 0.5s;
+}
+.store:hover{
+  transform: translateY(-5px);
 }
 img {
   display: block;
